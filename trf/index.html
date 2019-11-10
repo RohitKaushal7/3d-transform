@@ -103,10 +103,11 @@
 					</div>
 
 					<div class="tab" id="matrix">
-						<input type="number" id="a00"><input type="number" id="a01"><input type="number" id="a02"><input type="number" id="a03">
-						<input type="number" id="a10"><input type="number" id="a11"><input type="number" id="a12"><input type="number" id="a13">
-						<input type="number" id="a20"><input type="number" id="a21"><input type="number" id="a22"><input type="number" id="a23">
-						<input type="number" id="a30"><input type="number" id="a31"><input type="number" id="a32"><input type="number" id="a33">
+						<input type="number" id="a00" value="1"><input type="number" id="a01" value="0"><input type="number" id="a02" value="0"><input type="number" id="a03" value="0" step="0.0002" title="- 1/(X perspective)">
+						<input type="number" id="a10" value="0"><input type="number" id="a11" value="1"><input type="number" id="a12" value="0"><input type="number" id="a13" value="0" step="0.0002" title="1/(Y perspective)">
+						<input type="number" id="a20" value="0"><input type="number" id="a21" value="0"><input type="number" id="a22" value="1"><input type="number" id="a23" value="0" step="0.0002" title="- 1/(Z perspective)">
+						<input type="number" id="a30" value="0" title="Translate-X"><input type="number" id="a31" value="0" title="Translate-Y"><input type="number" id="a32" value="0" title="Translate-Z"><input type="number" id="a33" value="1" step="0.0002" title="Global Scaling factor">
+						<div class="btn" onclick="matrix_transform()">Transform</div>
 					</div>
 			
 				</div>

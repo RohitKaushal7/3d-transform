@@ -175,6 +175,20 @@ input[type=number]{
   "scx scy scz sca"
   "skx sky skz ska";
 }
+
+.btn{
+  padding: 0.9rem;
+  background: rgb(0, 119, 255);
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.btn:hover{
+  background: rgb(0, 82, 235);
+}
+
 .radio-group{
   grid-area: 1/1/1/4;
 }

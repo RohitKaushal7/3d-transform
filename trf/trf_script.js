@@ -26,7 +26,7 @@ function changeSide() {
     case 'bottom': tz=-100; rx=90; ry=rz=0; break;
   }
   tx=ty=rz=skx=sky=0;
-  p=400;
+//   p=400;
   sx=sy=sz=1;
   transform();
 }
@@ -49,6 +49,47 @@ function transform(){
   // console.log(`translate3d(${tx}px,${ty}px,${tz}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale3d(${sx},${sy},${sz}) skew(${skx}deg,${sky}deg)`); 
   setAll();
 }
+
+var a00,a01,a02,a03,
+	a10,a11,a12,a13,
+	a20,a21,a22,a23,
+	a30,a31,a32,a33;
+
+function matrix_transform(){
+	a00 = document.querySelector("#a00").value;
+	a01 = document.querySelector("#a01").value;
+	a02 = document.querySelector("#a02").value;
+	a03 = document.querySelector("#a03").value;
+	
+	a10 = document.querySelector("#a10").value;
+	a11 = document.querySelector("#a11").value;
+	a12 = document.querySelector("#a12").value;
+	a13 = document.querySelector("#a13").value;
+	
+	a20 = document.querySelector("#a20").value;
+	a21 = document.querySelector("#a21").value;
+	a22 = document.querySelector("#a22").value;
+	a23 = document.querySelector("#a23").value;
+	
+	a30 = document.querySelector("#a30").value;
+	a31 = document.querySelector("#a31").value;
+	a32 = document.querySelector("#a32").value;
+	a33 = document.querySelector("#a33").value;
+
+	box.style.transform = `matrix3d(
+		${a00},${a01},${a02},${a03},
+		${a10},${a11},${a12},${a13},
+		${a20},${a21},${a22},${a23},
+		${a30},${a31},${a32},${a33})`;
+	
+	console.log(`matrix3d(
+		${a00},${a01},${a02},${a03},
+		${a10},${a11},${a12},${a13},
+		${a20},${a21},${a22},${a23},
+		${a30},${a31},${a32},${a33})`);
+	
+}
+
 
 function setAll(){
   document.querySelector("#perspective").value=p;
