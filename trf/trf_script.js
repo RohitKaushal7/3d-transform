@@ -106,3 +106,18 @@ function setAll(){
   document.querySelector("#skewX").value=skx;
   document.querySelector("#skewY").value=sky;
 }
+
+function random(){
+	tx= 0 + parseInt(100*Math.random());
+	ty= 0 + parseInt(100*Math.random());
+	tz= 0 + parseInt(100*Math.random());
+	do{sx= -1.5 + parseInt(3*Math.random())}while(!sx);
+	do{sy= -1.5 + parseInt(3*Math.random())}while(!sy);
+	do{sz= -1.5 + parseInt(3*Math.random())}while(!sz);
+	// skx= -60 + parseInt(120*Math.random());
+	// sky= -60 + parseInt(120*Math.random());
+	rx= -360 + parseInt(720*Math.random());
+	ry= -360 + parseInt(720*Math.random());
+	rz= -360 + parseInt(720*Math.random());
+	transform();
+}
