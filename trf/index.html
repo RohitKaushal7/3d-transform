@@ -8,43 +8,110 @@
     <title>Transformations</title>
 </head>
 <body>
-  <div class="scene">
-    <div class="box">
-      <div class="box__face box__face--front">front</div>
-      <div class="box__face box__face--back">back</div>
-      <div class="box__face box__face--right">right</div>
-      <div class="box__face box__face--left">left</div>
-      <div class="box__face box__face--top">top</div>
-      <div class="box__face box__face--bottom">bottom</div>
-    </div>
-  </div>
-  <p class="radio-group">
-    <label>
-      <input type="radio" name="rotate-cube-side" value="front" checked /> front
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="right" /> right
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="back" /> back
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="left" /> left
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="top" /> top
-    </label>
-    <label>
-      <input type="radio" name="rotate-cube-side" value="bottom" /> bottom
-    </label>
-  </p>
-  <div class="controls">
-    <label for="perspective">perspective:</label> <input type="number" name="perspective" min=0>
+	<div class="header">
+		# 3d transformations
+	</div>
 
-    <label for="perspective">rotateX:</label> <input type="number" name="rotateX" onchange="rotate('X')">
-    <label for="perspective">rotateY:</label> <input type="number" name="rotateY" onchange="rotate('Y')">
-    <label for="perspective">rotateZ:</label> <input type="number" name="rotateZ" onchange="rotate('Z')">
+	<div class="footer">
+		Made with love by Rohit Kaushal.
+	</div>
+
+  <div class="main">
+		<div class="scene">
+				<div class="box">
+				<div class="box__face box__face--front">front</div>
+				<div class="box__face box__face--back">back</div>
+				<div class="box__face box__face--right">right</div>
+				<div class="box__face box__face--left">left</div>
+				<div class="box__face box__face--top">top</div>
+				<div class="box__face box__face--bottom">bottom</div>
+				</div>
+			</div>
+			
+				<div class="controls">
+			
+					<div class="ctrl radio-group" style="grid-area: rd;">
+						<label> <input type="radio" name="rotate-cube-side" value="front" checked /> front </label>
+						<label> <input type="radio" name="rotate-cube-side" value="right" /> right </label>
+						<label> <input type="radio" name="rotate-cube-side" value="back" /> back </label>
+						<label> <input type="radio" name="rotate-cube-side" value="left" /> left </label>
+						<label> <input type="radio" name="rotate-cube-side" value="top" /> top </label>
+						<label> <input type="radio" name="rotate-cube-side" value="bottom" /> bottom </label>
+					</div>
+					<div class="tab-ctrl">
+						<div class="prop" onclick="changeTab(0)">Properties</div>
+						<div class="mat" onclick="changeTab(1)">Matrix</div>
+					</div>
+			
+					<div class="tab" id="properties">
+						<div class="ctrl" style="grid-area: prx;">
+								<label for="perspective">perspective</label> 
+								<input type="number" name="perspective" id="perspective" min=0 value="400" step="10" onchange="p=this.value; transform();">
+							</div>
+					
+							<div class="ctrl" style="grid-area: trx;">
+								<label for="translateX">translateX</label> 
+								<input type="number" name="translateX" id="translateX" value="0" step="5" onchange="tx=this.value; transform();">
+							</div>
+							<div class="ctrl" style="grid-area: try;">
+								<label for="translateY">translateY</label> 
+								<input type="number" name="translateY" id="translateY" value="0" step="5" onchange="ty=this.value; transform();">
+							</div>
+							<div class="ctrl" style="grid-area: trz;">
+								<label for="translateZ">translateZ</label> 
+								<input type="number" name="translateZ" id="translateZ" value="0" step="5" onchange="tz=this.value; transform();">
+							</div>
+							
+							<div class="ctrl" style="grid-area: rtx;">
+								<label for="rotateX">rotateX</label> 
+								<input type="number" name="rotateX" id="rotateX" value="0" onchange="rx=this.value; transform();">
+							</div>
+							<div class="ctrl" style="grid-area: rty;">
+								<label for="rotateY">rotateY</label> 
+								<input type="number" name="rotateY" id="rotateY" value="0" onchange="ry=this.value; transform();">
+							</div>
+							<div class="ctrl" style="grid-area: rtz;">
+								<label for="rotateZ">rotateZ</label> 
+								<input type="number" name="rotateZ" id="rotateZ" value="0" onchange="rz=this.value; transform();">
+							</div>
+					
+							<div class="ctrl" style="grid-area: scx;">
+								<label for="scalex">scale-X</label> 
+								<input type="number" name="scaleX" id="scaleX" value="1" step="0.1" onchange="sx=this.value; transform();">
+							</div>
+							<div class="ctrl" style="grid-area: scy;">
+								<label for="scaley">scale-Y</label> 
+								<input type="number" name="scaleY" id="scaleY" value="1" step="0.1" onchange="sy=this.value; transform();">
+							</div>
+							<div class="ctrl" style="grid-area: scz;">
+									<label for="scalez">scale-Z</label> 
+									<input type="number" name="scaleZ" id="scaleZ" value="1" step="0.1" onchange="sz=this.value; transform();">
+							</div>
+							<div class="ctrl" style="grid-area: sca;">
+									<label for="scalea">Uniform-Scale</label> 
+									<input type="number" name="scaleA" id="scaleA" value="1" step="0.1" onchange="sx=sy=sz=this.value; transform();">
+							</div>
+					
+							<div class="ctrl" style="grid-area: skx;">
+								<label for="skewx">skew-X</label> 
+								<input type="number" name="skewX" id="skewX" value="0" onchange="skx=this.value; transform();">
+							</div>
+							<div class="ctrl" style="grid-area: sky;">
+								<label for="skewy">skew-Y</label> 
+								<input type="number" name="skewY" id="skewY" value="0" onchange="sky=this.value; transform();">
+							</div>
+					</div>
+
+					<div class="tab" id="matrix">
+						<input type="number" id="a00"><input type="number" id="a01"><input type="number" id="a02"><input type="number" id="a03">
+						<input type="number" id="a10"><input type="number" id="a11"><input type="number" id="a12"><input type="number" id="a13">
+						<input type="number" id="a20"><input type="number" id="a21"><input type="number" id="a22"><input type="number" id="a23">
+						<input type="number" id="a30"><input type="number" id="a31"><input type="number" id="a32"><input type="number" id="a33">
+					</div>
+			
+				</div>
   </div>
+	
   
   <script src="trf_script.js"></script>
 </body>

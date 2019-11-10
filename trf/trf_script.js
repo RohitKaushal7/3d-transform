@@ -1,7 +1,7 @@
 var box = document.querySelector('.box');
 var scene = document.querySelector('.scene');
 var radioGroup = document.querySelector('.radio-group');
-var currentClass = '';
+tabs = document.querySelectorAll('.tab');
 
 var tx=0,ty=0,tz=0,
     sx=1,sy=1,sz=1,
@@ -17,48 +17,51 @@ box.style.background = "transparent";
 
 function changeSide() {
   var checkedRadio = radioGroup.querySelector(':checked');
-  var showClass = 'show-' + checkedRadio.value;
-  if ( currentClass ) {
-    box.classList.remove( currentClass );
-    box.style.transform = "";
+  switch(checkedRadio.value){
+    case 'front': tz=-50; ry=0; rx=rz=0; break;
+    case 'back': tz=-50; ry=-180; rx=rz=0; break;
+    case 'right': tz=-150; ry=-90; rx=rz=0; break;
+    case 'left': tz=-150; ry=90; rx=rz=0; break;
+    case 'top': tz=-100; rx=-90; ry=rz=0; break;
+    case 'bottom': tz=-100; rx=90; ry=rz=0; break;
   }
-  box.classList.add( showClass );
-  currentClass = showClass;
+  tx=ty=rz=skx=sky=0;
+  p=400;
+  sx=sy=sz=1;
+  transform();
 }
 radioGroup.addEventListener( 'change', changeSide );
 
 
+function changeTab(x){
+	for(let i=0;i<tabs.length;++i){
+		tabs[i].style.display = "none";
+	}
+	tabs[x].style.display = "grid"; 
+}
+tabs[1].style.display = "none";
 
 // sets the transform css property
 
 function transform(){
-  if ( currentClass ) {
-    box.classList.remove( currentClass );
-  }
   scene.style.perspective = p !='0' ? p + "px": "none";
   box.style.transform = `translate3d(${tx}px,${ty}px,${tz}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale3d(${sx},${sy},${sz}) skew(${skx}deg,${sky}deg)`;
-  console.log(`translate3d(${tx}px,${ty}px,${tz}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale3d(${sx},${sy},${sz}) skew(${skx}deg,${sky}deg)`);
-  
+  // console.log(`translate3d(${tx}px,${ty}px,${tz}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale3d(${sx},${sy},${sz}) skew(${skx}deg,${sky}deg)`); 
+  setAll();
 }
 
-
-//perspective changes
-function perspective(){
-    let val = document.querySelector('[name=perspective]').value;
-    p = val;
-    transform();
-    
-    
-}
-document.querySelector('[name=perspective]').addEventListener("change",perspective);
-
-//perspective changes
-function rotate(o){
-    var val = document.querySelector('[name=rotate'+o+']').value;
-    switch(o){
-      case 'X': rx = val; break;
-      case 'Y': ry = val; break;
-      case 'Z': rz = val; break;
-    }
-    transform();
+function setAll(){
+  document.querySelector("#perspective").value=p;
+  document.querySelector("#translateX").value=tx;
+  document.querySelector("#translateY").value=ty;
+  document.querySelector("#translateZ").value=tz;
+  document.querySelector("#rotateX").value=rx;
+  document.querySelector("#rotateY").value=ry;
+  document.querySelector("#rotateZ").value=rz;
+  document.querySelector("#scaleX").value=sx;
+  document.querySelector("#scaleY").value=sy;
+  document.querySelector("#scaleZ").value=sz;
+  document.querySelector("#scaleA").value=sx;
+  document.querySelector("#skewX").value=skx;
+  document.querySelector("#skewY").value=sky;
 }
