@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="trf_style.css">
+    <title>Transformations</title>
+</head>
+<body>
+  <div class="scene">
+    <div class="box">
+      <div class="box__face box__face--front">front</div>
+      <div class="box__face box__face--back">back</div>
+      <div class="box__face box__face--right">right</div>
+      <div class="box__face box__face--left">left</div>
+      <div class="box__face box__face--top">top</div>
+      <div class="box__face box__face--bottom">bottom</div>
+    </div>
+  </div>
+  <p class="radio-group">
+    <label>
+      <input type="radio" name="rotate-cube-side" value="front" checked /> front
+    </label>
+    <label>
+      <input type="radio" name="rotate-cube-side" value="right" /> right
+    </label>
+    <label>
+      <input type="radio" name="rotate-cube-side" value="back" /> back
+    </label>
+    <label>
+      <input type="radio" name="rotate-cube-side" value="left" /> left
+    </label>
+    <label>
+      <input type="radio" name="rotate-cube-side" value="top" /> top
+    </label>
+    <label>
+      <input type="radio" name="rotate-cube-side" value="bottom" /> bottom
+    </label>
+  </p>
+  <div class="controls">
+    <label for="perspective">perspective:</label> <input type="number" name="perspective" min=0>
+
+    <label for="perspective">rotateX:</label> <input type="number" name="rotateX" onchange="rotate('X')">
+    <label for="perspective">rotateY:</label> <input type="number" name="rotateY" onchange="rotate('Y')">
+    <label for="perspective">rotateZ:</label> <input type="number" name="rotateZ" onchange="rotate('Z')">
+  </div>
+  
+  <script src="trf_script.js"></script>
+</body>
+</html>
