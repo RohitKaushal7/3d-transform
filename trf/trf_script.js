@@ -110,10 +110,10 @@ function setAll(){
   document.querySelector("#rotateX").value=rx;
   document.querySelector("#rotateY").value=ry;
   document.querySelector("#rotateZ").value=rz;
-  document.querySelector("#scaleX").value=sx;
-  document.querySelector("#scaleY").value=sy;
-  document.querySelector("#scaleZ").value=sz;
-  document.querySelector("#scaleA").value=sx;
+  document.querySelector("#scaleX").value=sx.toFixed(2);
+  document.querySelector("#scaleY").value=sy.toFixed(2);
+  document.querySelector("#scaleZ").value=sz.toFixed(2);
+  document.querySelector("#scaleA").value=sx.toFixed(2);
   document.querySelector("#skewX").value=skx;
   document.querySelector("#skewY").value=sky;
 }
@@ -122,9 +122,9 @@ function random(){
 	tx= 0 + parseInt(100*Math.random());
 	ty= 0 + parseInt(100*Math.random());
 	tz= 0 + parseInt(100*Math.random());
-	do{sx= -1.5 + parseInt(3*Math.random())}while(!sx);
-	do{sy= -1.5 + parseInt(3*Math.random())}while(!sy);
-	do{sz= -1.5 + parseInt(3*Math.random())}while(!sz);
+	do{sx= -1.5 + parseInt(30*Math.random())/10 }while(!sx);
+	do{sy= -1.5 + parseInt(30*Math.random())/10 }while(!sy);
+	do{sz= -1.5 + parseInt(30*Math.random())/10 }while(!sz);
 	// skx= -60 + parseInt(120*Math.random());
 	// sky= -60 + parseInt(120*Math.random());
 	rx= -360 + parseInt(720*Math.random());
