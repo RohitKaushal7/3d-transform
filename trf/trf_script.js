@@ -1,13 +1,20 @@
+// shadow..
+// orthographic projection
+// setinterval Randomize
+
 var box = document.querySelector('.box');
 var scene = document.querySelector('.scene');
 var radioGroup = document.querySelector('.radio-group');
 tabs = document.querySelectorAll('.tab');
+tabCtrl = document.querySelectorAll('.tab-ctrl>div');
 
 var tx=0,ty=0,tz=0,
     sx=1,sy=1,sz=1,
     skx=0,sky=0,
     rx=0,ry=0,rz=0,
-    p=400;
+	p=400,
+	trox=50,
+	troy=50;
 
 
 
@@ -36,16 +43,20 @@ radioGroup.addEventListener( 'change', changeSide );
 function changeTab(x){
 	for(let i=0;i<tabs.length;++i){
 		tabs[i].style.display = "none";
+		tabCtrl[i].classList.remove("active");
 	}
 	tabs[x].style.display = "grid"; 
+	tabCtrl[x].classList.add("active");
 }
 tabs[1].style.display = "none";
+tabCtrl[0].classList.add("active");
 
 // sets the transform css property
 
 function transform(){
   scene.style.perspective = p !='0' ? p + "px": "none";
   box.style.transform = `translate3d(${tx}px,${ty}px,${tz}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale3d(${sx},${sy},${sz}) skew(${skx}deg,${sky}deg)`;
+  box.style.transformOrigin = `${trox}% ${troy}%`;
   // console.log(`translate3d(${tx}px,${ty}px,${tz}px) rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) scale3d(${sx},${sy},${sz}) skew(${skx}deg,${sky}deg)`); 
   setAll();
 }

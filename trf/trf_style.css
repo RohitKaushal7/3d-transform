@@ -155,6 +155,7 @@ input[type=number]{
   justify-content: center;
   height: 3rem;
   width: 50%;
+  color: #333;
   background: #eee;
   cursor: pointer;
   transition: all 0.3s;
@@ -163,13 +164,20 @@ input[type=number]{
   background: #ddd;
 }
 
+.active{
+  background: #fff !important;
+  color: #000 !important;
+  border-bottom: 2px solid #0061f3;
+  box-shadow: 0 1px 5px 0px #0003;
+}
+
 .tab{
   display: grid;
   grid: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
   grid-gap: 1rem;
   margin-top: 2rem  ;
   grid-template-areas: 
-  "prx pr pr pra"
+  "prx tro trox troy"
   "trx try trz tra"
   "rtx rty rtz rta"
   "scx scy scz sca"
