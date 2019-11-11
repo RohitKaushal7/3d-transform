@@ -24,12 +24,12 @@
   <div class="main">
 		<div class="scene">
 				<div class="box">
-				<div class="box__face box__face--front">front</div>
-				<div class="box__face box__face--back">back</div>
-				<div class="box__face box__face--right">right</div>
-				<div class="box__face box__face--left">left</div>
-				<div class="box__face box__face--top">top</div>
-				<div class="box__face box__face--bottom">bottom</div>
+				<div draggable="true" class="box__face box__face--front">front</div>
+				<div draggable="true" class="box__face box__face--back">back</div>
+				<div draggable="true" class="box__face box__face--right">right</div>
+				<div draggable="true" class="box__face box__face--left">left</div>
+				<div draggable="true" class="box__face box__face--top">top</div>
+				<div draggable="true" class="box__face box__face--bottom">bottom</div>
 				</div>
 			</div>
 			
@@ -37,12 +37,12 @@
 					<div class="trigger"> </div>
 			
 					<div class="ctrl radio-group" style="grid-area: rd;">
-						<label> <input type="radio" name="rotate-cube-side" value="front" checked /> front </label>
-						<label> <input type="radio" name="rotate-cube-side" value="right" /> right </label>
-						<label> <input type="radio" name="rotate-cube-side" value="back" /> back </label>
-						<label> <input type="radio" name="rotate-cube-side" value="left" /> left </label>
-						<label> <input type="radio" name="rotate-cube-side" value="top" /> top </label>
-						<label> <input type="radio" name="rotate-cube-side" value="bottom" /> bottom </label>
+						<label class="radio"> <input type="radio" class="hidden" name="rotate-cube-side" value="front" checked /> <span class="label"></span> front </label>
+						<label class="radio"> <input type="radio" class="hidden" name="rotate-cube-side" value="right" /> <span class="label"></span> right </label>
+						<label class="radio"> <input type="radio" class="hidden" name="rotate-cube-side" value="back" /> <span class="label"></span> back </label>
+						<label class="radio"> <input type="radio" class="hidden" name="rotate-cube-side" value="left" /> <span class="label"></span> left </label>
+						<label class="radio"> <input type="radio" class="hidden" name="rotate-cube-side" value="top" /> <span class="label"></span> top </label>
+						<label class="radio"> <input type="radio" class="hidden" name="rotate-cube-side" value="bottom" /> <span class="label"></span> bottom </label>
 					</div>
 					<div class="tab-ctrl">
 						<div class="prop" onclick="changeTab(0)">Properties</div>
@@ -55,7 +55,7 @@
 							<input type="number" name="perspective" id="perspective" min=0 value="400" step="10"
 									title="0 for Orthographic projections."  
 									onchange="p=this.value; transform(); 
-									if(this.value == '0' ){
+									if(this.value == false){
 										document.querySelector('[for=perspective]').innerHTML = '<b>Orthographic</b>';
 									}
 									else{
@@ -76,28 +76,28 @@
 						</div>
 				
 						<div class="ctrl" style="grid-area: trx;">
-							<label for="translateX">translateX</label> 
+							<label for="translateX">translate-X</label> 
 							<input type="number" name="translateX" id="translateX" value="0" step="5" onchange="tx=this.value; transform();">
 						</div>
 						<div class="ctrl" style="grid-area: try;">
-							<label for="translateY">translateY</label> 
+							<label for="translateY">translate-Y</label> 
 							<input type="number" name="translateY" id="translateY" value="0" step="5" onchange="ty=this.value; transform();">
 						</div>
 						<div class="ctrl" style="grid-area: trz;">
-							<label for="translateZ">translateZ</label> 
+							<label for="translateZ">translate-Z</label> 
 							<input type="number" name="translateZ" id="translateZ" value="0" step="5" onchange="tz=this.value; transform();">
 						</div>
 						
 						<div class="ctrl" style="grid-area: rtx;">
-							<label for="rotateX">rotateX</label> 
+							<label for="rotateX">rotate-X</label> 
 							<input type="number" name="rotateX" id="rotateX" value="0" step="5" onchange="rx=this.value; transform();">
 						</div>
 						<div class="ctrl" style="grid-area: rty;">
-							<label for="rotateY">rotateY</label> 
+							<label for="rotateY">rotate-Y</label> 
 							<input type="number" name="rotateY" id="rotateY" value="0" step="5" onchange="ry=this.value; transform();">
 						</div>
 						<div class="ctrl" style="grid-area: rtz;">
-							<label for="rotateZ">rotateZ</label> 
+							<label for="rotateZ">rotate-Z</label> 
 							<input type="number" name="rotateZ" id="rotateZ" value="0" step="5" onchange="rz=this.value; transform();">
 						</div>
 				
@@ -137,7 +137,7 @@
 						<input type="number" id="a00" value="1" title="Scale X"><input type="number" id="a01" value="0"><input type="number" id="a02" value="0"><input type="number" id="a03" value="0" step="0.0002" title="- 1/(X perspective)">
 						<input type="number" id="a10" value="0"><input type="number" id="a11" value="1"  title="Scale Y"><input type="number" id="a12" value="0"><input type="number" id="a13" value="0" step="0.0002" title="1/(Y perspective)">
 						<input type="number" id="a20" value="0"><input type="number" id="a21" value="0"><input type="number" id="a22" value="1"  title="Scale Z"><input type="number" id="a23" value="0" step="0.0002" title="- 1/(Z perspective)">
-						<input type="number" id="a30" value="0" title="Translate-X"><input type="number" id="a31" value="0" title="Translate-Y"><input type="number" id="a32" value="0" title="Translate-Z"><input type="number" id="a33" value="1" step="0.0002" title="Global Scaling factor">
+						<input type="number" id="a30" value="0" title="Translate-X"><input type="number" id="a31" value="0" title="Translate-Y"><input type="number" id="a32" value="0" title="Translate-Z"><input type="number" id="a33" value="1" step="0.1" title="Global Scaling factor">
 						<div class="btn" onclick="matrix_transform()">Transform </div>
 					</div>
 			
