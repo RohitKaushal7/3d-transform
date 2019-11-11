@@ -127,9 +127,9 @@
 							<input type="number" name="skewY" id="skewY" value="0" onchange="sky=this.value; transform();">
 						</div>
 						
-						<div class="ctrl btn" id="random" style="grid-area: btn;" onclick="random()">
+						<div class="ctrl btn" title="Randomize" id="random" style="grid-area: btn;" onclick="random()">
 							I'm feeling lucky
-							<div><i class="fa fa-clock" onclick="lock.call(this)"></i> </div>
+							<div title="Auto Randomize Continuously"><i class="fa fa-clock" onclick="lock.call(this)"></i> </div>
 						</div>
 					</div>
 
@@ -146,13 +146,16 @@
   <script>
 	  var tip = new Typed('.tip',{
 			strings: ["","For Orthographic projections set perspective = 0 (actually Infinity)",
-						"Translate: move an object Over three Axis"
-					
+						"Translate:  move an object Over three Axis",
+						"Scaling :  You can change the size of an object using scaling transformation. In the scaling process, you either expand or compress the dimensions of the object. Scaling can be achieved by multiplying the original coordinates of the object with the scaling factor to get the desired result.",
+						"Shear :  A transformation that slants the shape of an object is called the shear transformation.",
+						"Transformation Matrices :  Transformation matrix is a basic tool for transformation. A matrix with n x m dimensions is multiplied with the coordinate of objects. Usually 3 x 3 or 4 x 4 matrices are used for transformation.",
+						"Rotation :  3D rotation is not same as 2D rotation. In 3D rotation, we have to specify the angle of rotation along with the axis of rotation."
 						] ,
 			typeSpeed: 30,
 			smartBackspace: true,
-			backSpeed: 20,
-			// shuffle: true,
+			backSpeed: 5,
+			shuffle: true,
 			backDelay: 5000,
 			loop:true,
 			// fadeOut: true,

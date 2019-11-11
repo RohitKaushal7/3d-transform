@@ -131,7 +131,9 @@ function random(){
 	transform();
 }
 
+
 var lock_timer , t_state = 0;
+
 function lock(){
 	if(t_state){
 		this.classList.remove('fa-lock');
@@ -144,10 +146,18 @@ function lock(){
 		lock_timer = setInterval(random,1200);
 	}
 	t_state^=1;
+	$('#random > div').toggleClass('rnd-on');
 }
 
 
 $('.trigger').click(()=>{
+	$('.controls').toggleClass('ct-off');
+	$('.trigger').toggleClass('tg-off');
+	$('.scene').toggleClass('sc-off');
+	$('input').toggleClass('ip-off');
+	$('.main').toggleClass('mn-off');
+});
+$('.scene').click(()=>{
 	$('.controls').toggleClass('ct-off');
 	$('.trigger').toggleClass('tg-off');
 	$('.scene').toggleClass('sc-off');
