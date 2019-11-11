@@ -4,12 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="trf_style.css">
+	<link rel="stylesheet" href="trf_style.css">
+	<link rel="stylesheet" href="../utils/fa/all.min.css">
+	<script src="../utils/fa/all.min.js"></script>
+	<script src="../utils/jquery.min.js"></script>
+	<script src="../utils/typed.min.js"></script>
     <title>Transformations</title>
 </head>
 <body>
 	<div class="header">
 		# 3d transformations
+		<div class="tip"></div>
 	</div>
 
 	<div class="footer">
@@ -29,6 +34,7 @@
 			</div>
 			
 				<div class="controls">
+					<div class="trigger"> </div>
 			
 					<div class="ctrl radio-group" style="grid-area: rd;">
 						<label> <input type="radio" name="rotate-cube-side" value="front" checked /> front </label>
@@ -46,18 +52,27 @@
 					<div class="tab" id="properties">
 						<div class="ctrl" style="grid-area: prx;">
 							<label for="perspective">perspective</label> 
-							<input type="number" name="perspective" id="perspective" min=0 value="400" step="10" onchange="p=this.value; transform();">
+							<input type="number" name="perspective" id="perspective" min=0 value="400" step="10"
+									title="0 for Orthographic projections."  
+									onchange="p=this.value; transform(); 
+									if(this.value == '0' ){
+										document.querySelector('[for=perspective]').innerHTML = '<b>Orthographic</b>';
+									}
+									else{
+										document.querySelector('[for=perspective]').innerHTML = 'Perspective';
+									}
+									">
 						</div>
 						<div class="ctrl" style="grid-area: tro; align-self: right;">
-							<label for="">Transform Origin ></label>
+							<label style="text-align: right;">Transform Origin ></label>
 						</div>
 						<div class="ctrl" style="grid-area: trox;">
 							<label for="trox">X %</label> 
-							<input type="number" name="trox" id="trox" min=0 value="50" step="5" onchange="trox=this.value; transform();">
+							<input type="number" name="trox" id="trox" value="50" step="5" onchange="trox=this.value; transform();">
 						</div>
 						<div class="ctrl" style="grid-area: troy;">
 							<label for="troy">Y %</label> 
-							<input type="number" name="troy" id="troy" min=0 value="50" step="5" onchange="troy=this.value; transform();">
+							<input type="number" name="troy" id="troy" value="50" step="5" onchange="troy=this.value; transform();">
 						</div>
 				
 						<div class="ctrl" style="grid-area: trx;">
@@ -114,20 +129,40 @@
 						
 						<div class="ctrl btn" id="random" style="grid-area: btn;" onclick="random()">
 							I'm feeling lucky
+							<div><i class="fa fa-clock" onclick="lock.call(this)"></i> </div>
 						</div>
 					</div>
 
 					<div class="tab" id="matrix">
-						<input type="number" id="a00" value="1"><input type="number" id="a01" value="0"><input type="number" id="a02" value="0"><input type="number" id="a03" value="0" step="0.0002" title="- 1/(X perspective)">
-						<input type="number" id="a10" value="0"><input type="number" id="a11" value="1"><input type="number" id="a12" value="0"><input type="number" id="a13" value="0" step="0.0002" title="1/(Y perspective)">
-						<input type="number" id="a20" value="0"><input type="number" id="a21" value="0"><input type="number" id="a22" value="1"><input type="number" id="a23" value="0" step="0.0002" title="- 1/(Z perspective)">
+						<input type="number" id="a00" value="1" title="Scale X"><input type="number" id="a01" value="0"><input type="number" id="a02" value="0"><input type="number" id="a03" value="0" step="0.0002" title="- 1/(X perspective)">
+						<input type="number" id="a10" value="0"><input type="number" id="a11" value="1"  title="Scale Y"><input type="number" id="a12" value="0"><input type="number" id="a13" value="0" step="0.0002" title="1/(Y perspective)">
+						<input type="number" id="a20" value="0"><input type="number" id="a21" value="0"><input type="number" id="a22" value="1"  title="Scale Z"><input type="number" id="a23" value="0" step="0.0002" title="- 1/(Z perspective)">
 						<input type="number" id="a30" value="0" title="Translate-X"><input type="number" id="a31" value="0" title="Translate-Y"><input type="number" id="a32" value="0" title="Translate-Z"><input type="number" id="a33" value="1" step="0.0002" title="Global Scaling factor">
-						<div class="btn" onclick="matrix_transform()">Transform</div>
+						<div class="btn" onclick="matrix_transform()">Transform </div>
 					</div>
 			
 				</div>
   </div>	
-  
+  <script>
+	  var tip = new Typed('.tip',{
+			strings: ["","For Orthographic projections set perspective = 0 (actually Infinity)",
+						"Translate: move an object Over three Axis"
+					
+						] ,
+			typeSpeed: 30,
+			smartBackspace: true,
+			backSpeed: 20,
+			// shuffle: true,
+			backDelay: 5000,
+			loop:true,
+			// fadeOut: true,
+			showCursor: false,
+			// cursorChar: '>_',
+			// autoInsertCss:true,
+			startDelay: 1000
+
+		});
+  </script>
   <script src="trf_script.js"></script>
 </body>
 </html>

@@ -1,6 +1,4 @@
-// shadow..
-// orthographic projection
-// setinterval Randomize
+// slectable parameters for randomize
 
 var box = document.querySelector('.box');
 var scene = document.querySelector('.scene');
@@ -119,9 +117,9 @@ function setAll(){
 }
 
 function random(){
-	tx= 0 + parseInt(100*Math.random());
-	ty= 0 + parseInt(100*Math.random());
-	tz= 0 + parseInt(100*Math.random());
+	tx= -100 + parseInt(200*Math.random());
+	ty= -100 + parseInt(200*Math.random());
+	tz= -100 + parseInt(200*Math.random());
 	do{sx= -1.5 + parseInt(30*Math.random())/10 }while(!sx);
 	do{sy= -1.5 + parseInt(30*Math.random())/10 }while(!sy);
 	do{sz= -1.5 + parseInt(30*Math.random())/10 }while(!sz);
@@ -132,3 +130,27 @@ function random(){
 	rz= -360 + parseInt(720*Math.random());
 	transform();
 }
+
+var lock_timer , t_state = 0;
+function lock(){
+	if(t_state){
+		this.classList.remove('fa-lock');
+		this.classList.add('fa-clock');
+		clearInterval(lock_timer);
+	}
+	else {
+		this.classList.remove('fa-clock');
+		this.classList.add('fa-lock');
+		lock_timer = setInterval(random,1200);
+	}
+	t_state^=1;
+}
+
+
+$('.trigger').click(()=>{
+	$('.controls').toggleClass('ct-off');
+	$('.trigger').toggleClass('tg-off');
+	$('.scene').toggleClass('sc-off');
+	$('input').toggleClass('ip-off');
+	$('.main').toggleClass('mn-off');
+});
