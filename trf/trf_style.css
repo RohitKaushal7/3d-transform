@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Source+Sans+Pro|ZCOOL+KuaiLe&display=swap');
+
+
 *{
     box-sizing: border-box;
     transition: all 0.3s;
     margin: 0;
-    font-family: sans-serif;
+    font-family: 'Open Sans','Source Sans Pro','ZCOOL KuaiLe',sans-serif, 'roboto','montserrat','arial';
 }
 
 body { 
@@ -19,7 +22,7 @@ body {
   align-items: flex-start;
   padding: 2.5rem;
   font-size: 1.5rem;
-  font-family: serif;
+  /* font-family: "Open Sans",'Source Sans Pro','ZCOOL KuaiLe'; */
   color: #ccc;
 }
 .tip{
@@ -39,7 +42,7 @@ body {
   align-items: center;
   padding: 2.5rem;
   font-size: 0.7rem;
-  font-family: serif;
+  /* font-family: serif; */
   color: #ccc;
 }
 .main{
@@ -94,7 +97,6 @@ input[type=number]{
   font-weight: bold;
   transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   box-shadow: inset 0 0 10px 2px #a3a3a333;
-  /* font-family: monospace; */
 }
 
 .controls{
@@ -221,6 +223,19 @@ input[type=number]{
 .rnd-on{
   background: rgba(0, 7, 49, 0.63) !important;
   box-shadow: -2px 0 3px 1px #0004;
+}
+
+.fa-lock{
+  animation: pop 0.2s;
+}
+
+.fa-clock{
+  animation: pop 0.2s;
+}
+@keyframes pop{
+  0%{transform: scale(1);}
+  50%{transform: scale(1.3);}
+  100%{transform: scale(1);}
 }
 
 .radio-group{
