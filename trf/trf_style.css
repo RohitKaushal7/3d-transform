@@ -78,14 +78,14 @@ body {
 
 label { 
   color: #555;
-  font-family: montserrat;
+  font-family: montserrat,'roboto';
   margin-left: 0.3rem;
   text-align: left;
   font-size: 0.9rem;
 }
 
 input[type=number]{
-  font-family: montserrat;
+  font-family: montserrat,'roboto';
   height: 50px;
   width: 100px;
   text-align: center;
