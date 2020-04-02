@@ -15,19 +15,6 @@ body {
   height: auto;
 }
 
-.ad {
-  /* background: red; */
-  display: block;
-  position: relative;
-  max-width: 800px;
-  max-height: 120px;
-  min-width: 730px;
-  min-height: 100px;
-  background: #eee2;
-  overflow: hidden;
-  margin: 1rem auto;
-}
-
 .header {
   position: absolute;
   /* width: 200px; */
@@ -424,9 +411,6 @@ input[type="radio"]:checked + .label:after {
 }
 
 @media (max-width: 650px) {
-  .ad {
-    max-width: 100% !important;
-  }
   .main {
     grid: 1fr 1.5fr/ 1fr;
     grid-template-areas:
